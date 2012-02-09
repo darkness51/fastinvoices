@@ -11,12 +11,20 @@ class Category(models.Model):
     class Meta:
         verbose_name_plural = 'Categories'
     
-    
 class Tax(models.Model):
     '''
     Class for Taxes
     '''
+    
+    TYPES = (
+        (u'QTY', u'Quantity'),
+        (u'PER', u'Percentaje'),
+    )
+    
     name = models.CharField(max_length=255)
+    tax_type = models.CharField(verbose_name="Type", max_length=4, choices=TYPES, default='PER')
+    rate = models.FloatField()
+    active = models.BooleanField(default=True)
     
     class Meta:
         verbose_name_plural = 'Taxes'
