@@ -8,12 +8,18 @@ class Category(models.Model):
     '''
     nombre = models.CharField(max_length=255)
     
+    class Meta:
+        verbose_name_plural = 'Categories'
+    
     
 class Tax(models.Model):
     '''
     Class for Taxes
     '''
     name = models.CharField(max_length=255)
+    
+    class Meta:
+        verbose_name_plural = 'Taxes'
 
 class Product(models.Model):
     '''
@@ -26,7 +32,7 @@ class Product(models.Model):
     cost_unit = models.FloatField()
     taxes = models.ForeignKey(Tax)
     description = models.TextField()
-    active = models.BooleanField()
+    active = models.BooleanField(default=True)
     
     def __unicode__(self):
         return "%s" % self.code
