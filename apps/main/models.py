@@ -57,4 +57,37 @@ class CustomAttribute(models.Model):
     
     def __unicode__(self):
         return "%s: %s" % (self.name, self.value)
+        
+class Country(models.Model):
+    '''
+    Countries Table
+    '''
+    name = models.CharField(max_length=255)
+    code = models.CharField(max_length=5)
+        
+class Client(models.Model):
+    '''
+    Class for clients
+    '''
+    name = models.CharField(verbose_name="Client Name", max_length=255)
+    contacto = models.CharField(max_length=255) # Se puede cambiar por un diccionario
+    address = models.CharField(max_length=255)
+    city = models.CharField(max_length=150)
+    zip_code = models.IntegerField()
+    state = models.CharField(max_length=255)
+    country = models.ForeignKey(Country)
+    phone = models.CharField(max_length=20)
+    cellphone = models.CharField(max_length=20)
+    fax = models.CharField(max_length=20)
+    email = models.EmailField()
+    entity_name = models.CharField(max_length=255)
+    business_id = models.CharField(max_length=50)
+    tax_id = models.CharField(max_length=20)
+    tax_address = models.TextField()
+    line_of_bussiness = models.CharField(max_length=255)
+    observations = models.TextField()
+    active = models.BooleanField(default=True)
+    
+    def __unicode__(self):
+        return "%s" % self.name
     
