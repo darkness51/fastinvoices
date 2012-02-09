@@ -7,6 +7,8 @@ class Category(models.Model):
     Class for categories
     '''
     nombre = models.CharField(max_length=255)
+    #parent = models.ForeignKey(self)
+    reference = models.IntegerField()
     
     class Meta:
         verbose_name_plural = 'Categories'
