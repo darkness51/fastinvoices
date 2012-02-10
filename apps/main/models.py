@@ -44,7 +44,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category, verbose_name=_('Cateogory'))
     price_unit = models.FloatField(_('Price Unit'))
     cost_unit = models.FloatField(_('Cost Unit'))
-    taxes = models.ForeignKey(Tax, verbose_name=-('Taxes'))
+    taxes = models.ForeignKey(Tax, verbose_name=_('Taxes'))
     description = models.TextField(_('Description'))
     active = models.BooleanField(_('Active'), default=True)
     
