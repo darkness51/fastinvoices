@@ -1,5 +1,5 @@
 from django.contrib import admin
-from models import Category, Tax, Product, CustomAttribute
+from models import Category, Tax, Product, CustomAttribute, Client
 
 class CustomAttributeInline(admin.TabularInline):
     model = CustomAttribute
@@ -16,3 +16,4 @@ class ProductAdmin(admin.ModelAdmin):
 admin.site.register(Category)
 admin.site.register(Tax)
 admin.site.register(Product, ProductAdmin)
+admin.site.register(Client)
