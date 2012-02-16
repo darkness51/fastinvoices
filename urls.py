@@ -7,6 +7,7 @@ admin.autodiscover()
 
 urlpatterns = patterns('',
     (r'^$', 'main.views.index'),
+    url(r'^logout/$', 'main.views.logout_page', name="logout"),
     url(r'^admin/', include(admin.site.urls)),
 ) + staticfiles_urlpatterns()
 
