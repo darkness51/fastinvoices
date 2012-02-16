@@ -9,3 +9,10 @@ from pprint import pprint
 import logging
 
 logger = logging.getLogger(__name__)
+
+def index(request):
+    '''
+    Main view for the application
+    '''
+    
+    return render_to_response("index.html", context_instance=RequestContext(request))
