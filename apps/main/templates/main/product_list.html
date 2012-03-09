@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+<h1>Product List</h1>
+
+<p>
+    <a href="{% url product-add %}" class="btn btn-primary">{% trans "Add" %}</a>
+</p>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>{% trans "Code" %}</th>
+            <th>{% trans "Item" %}</th>
+            <th>{% trans "Category" %}</th>
+            <th>{% trans "Price Unit" %}</th>
+            <th>{% trans "Cost Unit" %}</th>
+            <th>{% trans "Taxes" %}</th>
+            <th>{% trans "Description" %}</th>
+            <th>{% trans "Active" %}</th>
+            <th>{% trans "Actions" %}</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for product in object_list %}
+            <tr>
+                <td>{{ product.code }}</td>
+                <td>{{ product.item }}</td>
+                <td>{{ product.category }}</td>
+                <td>$ {{ product.price_unit }}</td>
+                <td>$ {{ product.cost_unit }}</td>
+                <td>{{ product.taxes }}</td>
+                <td>{{ product.description }}</td>
+                <td>{{ product.active }}</td>
+                <td><a href="#" class="btn">{% trans "Edit" %}</a> | <a hred="#" class="btn">{% trans "Delete" %}</a></td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+<p>
+    {% if is_paginated %}
+        {% if page_obj.has_previous %}
+            <a href="{% url product_list %}?page={{ page_obj.previous_page_number }}">{% trans "Previous" %}</a>
+        {% endif %}
+        
+        <!-- current page -->
+        {% trans "Page" %} {{ page_obj.number }} {% trans "of" %} {{ page_obj.paginator.num_pages }}.
+        <!-- end current page -->
+        
+        {% if page_obj.has_next %}
+            <a href="{% url product_list %}?page={{ page_obj.next_page_number }}">{% trans "Next" %}</a>
+        {% endif %}
+    {% endif %}
+</p>
+{% endblock %}
