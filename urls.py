@@ -2,11 +2,14 @@ from django.conf.urls.defaults import patterns, include, url
 from django.contrib import admin
 from django.conf import settings
 from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from main.views import IndexView, ProductListView, ProductAddView
 
 admin.autodiscover()
 
 urlpatterns = patterns('',
-    (r'^$', 'main.views.index'),
+    url(r'^$', IndexView.as_view(), name="home"),
+    url(r'^products/', ProductListView.as_view(), name="product-list"),
+    url(r'^products/add/$', ProductAddView.as_view(), name="product-add"),
     url(r'^logout/$', 'main.views.logout_page', name="logout"),
     url(r'^admin/', include(admin.site.urls)),
 ) + staticfiles_urlpatterns()
