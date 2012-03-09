@@ -31,6 +31,9 @@ class Tax(models.Model):
     rate = models.FloatField(_('Rate'))
     active = models.BooleanField(_('Active'), default=True)
     
+    def __unicode__(self):
+        return "%s" % self.name
+    
     class Meta:
         verbose_name = _('Tax')
         verbose_name_plural = _('Taxes')
