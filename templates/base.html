@@ -4,9 +4,10 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>{% block title %} {%trans "Fast Invoices" %} {% endblock %}</title>
+        <title>{% block title %} {% trans "Fast Invoices" %} {% endblock %}</title>
         <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap.min.css">
         <link rel="stylesheet" href="{{ STATIC_URL }}css/bootstrap-responsive.min.css">
+        <link rel="stylesheet" href="{{ STATIC_URL }}css/application.css">
     </head>
     <body data-spy="scroll" data-target=".subnav" data-offset="50" data-rendering="true">
         <div class="navbar navbar-fixed-top">
@@ -17,12 +18,12 @@
                         <span class="icon-bar"></span>
                         <span class="icon-bar"></span>
                     </a>
-                    <a class="brand" href="{% url main.views.index %}">Fast Invoices</a>
+                    <a class="brand" href="{% url home %}">Fast Invoices</a>
                     <div class="nav-collapse">
                         <ul class="nav">
-                            <li><a href='{% url main.views.index %}'>{% trans "Home" %}</a></li>
+                            <li><a href='{% url home %}'>{% trans "Home" %}</a></li>
                             {% if user.is_authenticated %}
-                            <li><a href='#'>{% trans "Products" %}</a></li>
+                            <li><a href='{% url product-list %}'>{% trans "Products" %}</a></li>
                             <li><a href='#'>{% trans "Clients" %}</a></li>
                             <li><a href='#'>{% trans "Reports" %}</a></li>
                             {% endif %}
