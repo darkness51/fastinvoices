@@ -30,6 +30,7 @@
                         </ul>
                         {% if not user.is_authenticated %}
                         <form action="#" method="post" class="navbar-search pull-left">
+                            {% csrf_token %}
                             <input type="text" name="username" placeholder='{% trans "User" %}' autocomplete="on" class="search-query span2">
                             <input type="password" name="password" placeholder='{% trans "Password" %}' class="search-query span2">
                             <button class="btn" type="submit">{% trans "Log in" %}</button>
@@ -45,7 +46,7 @@
                                     <li><a href="#">Twitter Login</a></li>
                                     <li><a href="#">Youtube Login</a></li>
                                     <li class="divider"></li>
-                                    <li><a href="#">Configuracion</a></li>
+                                    <li><a href="#">Configuration</a></li>
                                     <li class="divider"></li>
                                     <li><a href='{% url logout %}'>{% trans "Log out" %}</a></li>
                                 </ul>
