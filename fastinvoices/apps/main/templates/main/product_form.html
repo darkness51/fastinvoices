@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block content %}
+    <h1>{% trans "Create Product" %}</h1>
+    <form method="post" action=".">
+        {% csrf_token %}
+        {{ form }}
+        <p>
+            <br />
+            <input type="submit" class="btn btn-primary" value="{% trans 'Create' %}" />
+        </p>
+    </form>
+{% endblock %}
